@@ -1,7 +1,11 @@
 ## 8821au ( 8821au.ko ) :rocket:
 
-HOT: An effort is underway to add in-kernel support for the rtl8821/11au chipset.
-For more information, go to: https://github.com/morrownr/8821au-20210708/issues/133
+Hot: An in-kernel driver for the rtl8821/11au chipsets has been merged into
+kernels 6.13 and 6.14. Installing this driver will automatically blacklist
+the new in-kernel driver, which is part of the rtw88 series of drivers. The
+new in-kernel driver is Linux Standards compliant and is a much better driver
+than this one. This driver will no longer get API related updates beyond
+kernel 6.13. Pull Requests are still welcome.
 
 ## Linux Driver for USB WiFi Adapters that are based on the RTL8811AU and RTL8821AU Chipsets
 
@@ -12,7 +16,7 @@ how to confirm that this is the correct driver for your adapter.
 
 Note: Posting this driver is not a recommendation for Linux users to buy
 USB WiFi adapters based on the Realtek chipsets supported by this driver.
-Realtek out-of-kernel wifi drivers, such as this one, are not Linux Wireless
+Realtek out-of-kernel WiFi drivers, such as this one, are not Linux Wireless
 Standards compliant and appear to be designed to be used by skilled
 programmers producing products such as embedded systems. Users of desktop
 and server distros such as Ubuntu, Debian, Manjaro, Fedora, Raspberry Pi OS
@@ -68,15 +72,15 @@ the hardware to test the above.
 
 ### Compatible Kernels
 
-- Kernels: 5.4 - 5.11 (Realtek)
-- Kernels: 5.12 - 6.10  (community support)
+- Kernels: 5.4 - 5.11   (Realtek)
+- Kernels: 5.12 - 6.13  (community support)
 
 Note: Kernels earlier than 5.4 may work but are not tested or
 supported.
 
 ### Tested Compilers
 
-- gcc 11, 12 and 13
+- gcc 12, 13 and 14
 
 ### Tested Linux Distributions
 
@@ -89,7 +93,7 @@ which can be provided via PR or message in Issues.
 
 - [Debian](https://www.debian.org/) (kernels 5.10, 5.15, 6.1 and 6.6)
 
-- [Fedora](https://getfedora.org) Fedora 38 (6.2.13-300)
+- [Fedora](https://getfedora.org) Fedora 38, 41 (kernel 6.11)
 
 - [Manjaro](https://manjaro.org) (kernel 5.15)
 
@@ -99,7 +103,7 @@ which can be provided via PR or message in Issues.
 
 - [Raspberry Pi Desktop](https://www.raspberrypi.org) (2022-07-01) (x86 32 bit) (kernel 5.10)
 
-- [Ubuntu](https://www.ubuntu.com) 22.04 (kernel 5.15) and 22.10 (kernel 5.19) (kernel 6.5)
+- [Ubuntu](https://www.ubuntu.com) 22.04 (kernel 5.15), 22.10 (kernel 5.19) (kernel 6.5) and 24.10 (kernel 6.11)
 
 Note: Red Hat Enterprise Linux (RHEL) and distros based on RHEL are
 supported by Red Hat devs due to the way kernel patches are handled in
@@ -135,6 +139,7 @@ OpenWRT so it is strongly advised to use the already supported chipsets.
 * Netis WF2180
 * Planex GW-450S
 * EDUP EP-1607
+* TP-Link Archer T2U nano
 * Numerous adapters that are based on the supported chipsets.
 
 ### Installation Information
@@ -468,7 +473,7 @@ enter commands.
 sudo make sign-install
 ```
 
-Note: You will be promted for a password, please remember the password
+Note: You will be prompted for a password, please remember the password
 as it will be used in some of the following steps.
 
 ```
