@@ -4650,7 +4650,7 @@ static int cfg80211_rtw_get_txpower(struct wiphy *wiphy,
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
 	struct wireless_dev *wdev,
 #endif
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0))
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0) || defined(RHEL9_590))
  	unsigned int link_id,
 #endif
 	int *dbm)
@@ -6909,7 +6909,7 @@ static void rtw_get_chbwoff_from_cfg80211_chan_def(
 #endif /* (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0)) */
 
 static int cfg80211_rtw_set_monitor_channel(struct wiphy *wiphy
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0))
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0) || defined(RHEL9_590))
 	, struct net_device *dev
 	, struct cfg80211_chan_def *chandef
 #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))

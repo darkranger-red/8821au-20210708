@@ -68,6 +68,9 @@ RHEL_RELEASE := $(shell grep -s -E '^\#define RHEL_RELEASE[[:space:]]+"[[:digit:
 ifeq (${RHEL_MAJOR}, 9)
 ifeq ($(shell test $(RHEL_MINOR) -ge 5; echo $$?), 0)
 EXTRA_CFLAGS += -DRHEL9
+ifeq ($(shell test $(RHEL_RELEASE) -ge 590; echo $$?), 0)
+EXTRA_CFLAGS += -DRHEL9_590
+endif
 endif
 endif
 
