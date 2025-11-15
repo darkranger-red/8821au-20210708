@@ -60,10 +60,10 @@ EXTRA_LDFLAGS += --strip-debug
 CONFIG_AUTOCFG_CP = n
 
 # RHEL
-KERNEL_SOURCE = $(shell uname -r)
-RHEL_MAJOR := $(shell grep -s -E '^\#define RHEL_MAJOR[[:space:]]+[[:digit:]]+' "/usr/src/kernels/$(KERNEL_SOURCE)/include/generated/uapi/linux/version.h"|awk '{print $$3} END {if (!NR) print "0"}')
-RHEL_MINOR := $(shell grep -s -E '^\#define RHEL_MINOR[[:space:]]+[[:digit:]]+' "/usr/src/kernels/$(KERNEL_SOURCE)/include/generated/uapi/linux/version.h"|awk '{print $$3} END {if (!NR) print "0"}')
-RHEL_RELEASE := $(shell grep -s -E '^\#define RHEL_RELEASE[[:space:]]+"[[:digit:]]+' "/usr/src/kernels/$(KERNEL_SOURCE)/include/generated/uapi/linux/version.h"|sed 's/\./ /g'|sed 's/"/ /g'|awk '{print $$3} END {if (!NR) print "0"}')
+KVER ?= $(shell uname -r)
+RHEL_MAJOR := $(shell grep -s -E '^\#define RHEL_MAJOR[[:space:]]+[[:digit:]]+' "/usr/src/kernels/$(KVER)/include/generated/uapi/linux/version.h"|awk '{print $$3} END {if (!NR) print "0"}')
+RHEL_MINOR := $(shell grep -s -E '^\#define RHEL_MINOR[[:space:]]+[[:digit:]]+' "/usr/src/kernels/$(KVER)/include/generated/uapi/linux/version.h"|awk '{print $$3} END {if (!NR) print "0"}')
+RHEL_RELEASE := $(shell grep -s -E '^\#define RHEL_RELEASE[[:space:]]+"[[:digit:]]+' "/usr/src/kernels/$(KVER)/include/generated/uapi/linux/version.h"|sed 's/\./ /g'|sed 's/"/ /g'|awk '{print $$3} END {if (!NR) print "0"}')
 
 ifeq (${RHEL_MAJOR}, 9)
 ifeq ($(shell test $(RHEL_MINOR) -ge 5; echo $$?), 0)
